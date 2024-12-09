@@ -1,6 +1,9 @@
 <script setup>
 import CalendarHeader from './CalendarHeader.vue'
 import CalendarMain from './CalendarMain.vue';
+
+import { useCalendarStore } from '@/stores/calendar';
+const calendar_store = useCalendarStore();
 </script>
 
 <template>

@@ -2,11 +2,30 @@ import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
 
 export const useCalendarStore = defineStore('calendar', () => {
-  const count = ref(0)
-  const doubleCount = computed(() => count.value * 2)
-  function increment() {
-    count.value++
+  /**
+   * 
+   */
+  const base_date = ref(new Date());
+
+  /**
+   * 
+   */
+  const offset = ref(7);
+
+  /**
+   * 
+   */
+  const activities = ref([]);
+
+  //const doubleCount = computed(() => count.value * 2);
+
+  /**
+   * 
+   * @param {*} offset 
+   */
+  function setOffset(offset) {
+    offset.value = offset;
   }
 
-  return { count, doubleCount, increment }
+  return { base_date, offset, setOffset, };
 })
