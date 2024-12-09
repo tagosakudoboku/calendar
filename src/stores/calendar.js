@@ -1,5 +1,6 @@
 import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
+import axios from 'axios';
 
 export const useCalendarStore = defineStore('calendar', () => {
   /**
@@ -25,6 +26,11 @@ export const useCalendarStore = defineStore('calendar', () => {
    */
   function setOffset(offset) {
     offset.value = offset;
+  }
+
+  function fetchActivities()
+  {
+
   }
 
   return { base_date, offset, setOffset, };

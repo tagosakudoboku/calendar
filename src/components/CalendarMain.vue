@@ -1,18 +1,29 @@
 <template>
     <div class="calendar_main">
-        メイン
+        <Pane />
+        <CalendarMainBody />
     </div>
 </template>
 
+
+<script setup>
+import CalendarMainBody from './CalendarMainBody.vue';
+import Pane from './Pane.vue';
+</script>
 <style>
     .calendar_main{
-        height: 100%;
+        box-sizing: border-box;
+
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: 20% 80%;
+        /* height: 100%;
         border-bottom: 2px solid #ccc;
 
-        box-sizing: border-box;
+        
         font-size: 64px;
 
         display: flex;
-        align-items: center;
+        align-items: center; */
     }
 </style>
