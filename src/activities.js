@@ -476,4 +476,31 @@ const acts = [
         "color": "#8E44AD"
     }
 ];
-export {acts};
+
+const acts2 = [
+    { 'title': "会議", 'start_time': "2024-11-15 09:00:00", end_time: "2024-11-15 10:00:00", description: "チーム会議", color: "#FF5733" },
+    { title: "セミナー", start_time: "2024-11-16 14:00:00", end_time: "2024-11-16 16:00:00", description: "業界セミナー", color: "#FFC300" },
+    { title: "ランチ", start_time: "2024-11-17 12:00:00", end_time: "2024-11-17 13:00:00", description: "ランチ交流会", color: "#33FF57" },
+    { title: "ワークショップ", start_time: "2024-11-18 15:00:00", end_time: "2024-11-18 17:00:00", description: "技術ワークショップ", color: "#3498DB" },
+    { title: "ブレインストーム", start_time: "2024-11-19 10:00:00", end_time: "2024-11-19 12:00:00", description: "アイデア出しセッション", color: "#9B59B6" },
+    { title: "レビュー", start_time: "2024-11-20 16:00:00", end_time: "2024-11-20 17:00:00", description: "成果物レビュー", color: "#C0392B" },
+    { title: "トレーニング", start_time: "2024-11-21 09:30:00", end_time: "2024-11-21 11:30:00", description: "新しいツール習得", color: "#F39C12" },
+    { title: "会議", start_time: "2024-11-22 11:00:00", end_time: "2024-11-22 12:30:00", description: "計画会議", color: "#FF5733" },
+    { title: "セミナー", start_time: "2024-11-23 15:00:00", end_time: "2024-11-23 17:00:00", description: "業界動向セミナー", color: "#FFC300" },
+    { title: "ランチ", start_time: "2024-11-24 12:00:00", end_time: "2024-11-24 13:00:00", description: "チームランチ", color: "#33FF57" },
+    { title: "ワークショップ", start_time: "2024-11-25 14:00:00", end_time: "2024-11-25 16:00:00", description: "デザインワークショップ", color: "#3498DB" },
+    { title: "ブレインストーム", start_time: "2024-11-26 10:00:00", end_time: "2024-11-26 12:00:00", description: "新プロジェクトアイデア", color: "#9B59B6" },
+    { title: "レビュー", start_time: "2024-11-27 14:00:00", end_time: "2024-11-27 15:30:00", description: "コードレビュー", color: "#C0392B" },
+    { title: "トレーニング", start_time: "2024-11-28 10:00:00", end_time: "2024-11-28 12:00:00", description: "ツール習得セッション", color: "#F39C12" },
+    { title: "会議", start_time: "2024-12-01 09:00:00", end_time: "2024-12-01 10:30:00", description: "進捗会議", color: "#FF5733" },
+    { title: "セミナー", start_time: "2024-12-02 15:00:00", end_time: "2024-12-02 17:00:00", description: "マーケティングセミナー", color: "#FFC300" },
+    { title: "ランチ", start_time: "2024-12-03 12:00:00", end_time: "2024-12-03 13:00:00", description: "プロジェクトランチ", color: "#33FF57" },
+    { title: "ワークショップ", start_time: "2024-12-04 14:00:00", end_time: "2024-12-04 16:00:00", description: "AIワークショップ", color: "#3498DB" },
+    { title: "ブレインストーム", start_time: "2024-12-05 15:00:00", end_time: "2024-12-05 16:00:00", description: "アイデア出し会", color: "#9B59B6" },
+    { title: "レビュー", start_time: "2024-12-06 16:00:00", end_time: "2024-12-06 17:00:00", description: "成果物評価会", color: "#C0392B" },
+    { title: "トレーニング", start_time: "2024-12-07 09:00:00", end_time: "2024-12-07 11:00:00", description: "チームトレーニング", color: "#F39C12" },
+    { title: "会議", start_time: "2024-12-08 11:00:00", end_time: "2024-12-08 12:00:00", description: "作業進捗会議", color: "#FF5733" },
+    { title: "セミナー", start_time: "2024-12-09 10:00:00", end_time: "2024-12-09 11:30:00", description: "最新技術セミナー", color: "#FFC300" },
+    { title: "ランチ", start_time: "2024-12-10 12:00:00", end_time: "2024-12-10 13:00:00", description: "チームランチ交流会", color: "#33FF57" }
+];
+export {acts,acts2};

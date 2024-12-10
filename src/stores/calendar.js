@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
 import axios from 'axios';
-import {acts}  from "../activities.js";
+import {acts,acts2}  from "../activities.js";
 import { runCalendar } from '@/components/function.js';
 
 export const useCalendarStore = defineStore('calendar', () => {
