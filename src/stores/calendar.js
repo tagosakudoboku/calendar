@@ -29,11 +29,16 @@ export const useCalendarStore = defineStore('calendar', () => {
     offset.value = offset;
   }
 
+  function setBaseDate(date_obj)
+  {
+    base_date.value = new Date(date_obj);
+  }
+
   function fetchActivities()
   {
     activities.value = acts;
     return activities.value;
   }
 
-  return { base_date, offset, setOffset, fetchActivities};
+  return { base_date, offset, setOffset, setBaseDate,fetchActivities};
 })

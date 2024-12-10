@@ -1,7 +1,8 @@
 <template>
     <div class="calendar_main_body">
         <div class="timeline_headers">
-
+            <TimelineHeader v-for="(day, index) in week" :key="index" 
+            :date="day" />
         </div>
         <div class="timelines">
             <TimelineScale />
@@ -13,13 +14,23 @@
 </template>
 
 <script setup>
+import TimelineHeader from './calendar_main_body/TimelineHeader.vue';
 import Timeline from './calendar_main_body/Timeline.vue';
 import TimelineScale from './calendar_main_body/TimelineScale.vue';
-
+import { watch,ref } from 'vue';
+import { addDay, getThisWeek } from './function.js';
 import { useCalendarStore } from '@/stores/calendar';
 const cal_store = useCalendarStore();
-//console.log(cal_store.fetchActivities());
-const activities = cal_store.fetchActivities()
+
+let date = cal_store.base_date;
+let week = ref(getThisWeek(date));
+watch(() =>cal_store.base_date, ()=>{
+    date = cal_store.base_date;
+    week.value = getThisWeek(date);
+});
+
+//const activities = cal_store.fetchActivities();
+const activities = [];
 </script>
 
 <style>

@@ -1,6 +1,6 @@
 <template>
     <div class="activity">
-        {{ activity.title }}
+        <!-- {{ activity.title }} -->
     </div>
 </template>
 
