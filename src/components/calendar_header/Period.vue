@@ -1,6 +1,11 @@
 <template>
     <div class="period">
-        {{ base_date.getDate() }}
+        <span>
+            {{ base_date.getMonth()+1}} - {{ base_date.getDate() }}
+                ~
+            {{ base_date.getMonth()+1 }} - {{ base_date.getDate() }}
+        </span>
+        
     </div>
 </template>
 <script setup>

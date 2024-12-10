@@ -1,19 +1,26 @@
 <template>
-    <div class="activity">
+    <div class="activity" @click="showModal">
         {{ activity.title }}
+        <ModalLogic ref="modal" :activity="activity" />
     </div>
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted,ref } from 'vue';
+import ModalLogic from './ModalLogic.vue';
 const props = defineProps({
     activity: Object
 });
 
+const modal = ref(null);
 
 onMounted(() => {
     // console.log(props.activity);  
 });
+
+const showModal = () => {
+    modal.value.showModal();
+};
 
 const height = props.activity.height + "px";
 const top= props.activity.top + "px";
