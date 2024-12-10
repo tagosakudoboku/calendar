@@ -1,14 +1,24 @@
 <script setup>
 import CalendarHeader from './CalendarHeader.vue'
 import CalendarMain from './CalendarMain.vue';
-
+import { watch,ref } from 'vue';
 import { useCalendarStore } from '@/stores/calendar';
 const calendar_store = useCalendarStore();
+
+/*
+const sampleProps = () => {
+  watch(()=>{calendar_store.base_date},
+    (
+      
+    )=>{
+      console.log("calendar_store.base_date is changed");
+  });
+};*/
 </script>
 
 <template>
     <div class="calendar">
-        <CalendarHeader />
+        <CalendarHeader  />
         <CalendarMain />
     </div>
 </template>

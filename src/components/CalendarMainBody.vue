@@ -5,7 +5,9 @@
         </div>
         <div class="timelines">
             <TimelineScale />
-            <Timeline v-for="n in 7" :key="n"/>
+            <Timeline v-for="n in 7" :key="n"
+                :activities="activities"
+            />
         </div>
     </div>
 </template>
@@ -13,6 +15,11 @@
 <script setup>
 import Timeline from './calendar_main_body/Timeline.vue';
 import TimelineScale from './calendar_main_body/TimelineScale.vue';
+
+import { useCalendarStore } from '@/stores/calendar';
+const cal_store = useCalendarStore();
+//console.log(cal_store.fetchActivities());
+const activities = cal_store.fetchActivities()
 </script>
 
 <style>
