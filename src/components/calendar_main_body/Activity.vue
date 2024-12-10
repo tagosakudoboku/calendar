@@ -1,6 +1,6 @@
 <template>
     <div class="activity">
-        <!-- {{ activity.title }} -->
+        {{ activity.title }}
     </div>
 </template>
 
@@ -12,13 +12,20 @@ const props = defineProps({
 
 
 onMounted(() => {
-    //console.log(props.activity);  
-    // コンポーネントがマウントされた後にログを出力
+    // console.log(props.activity);  
 });
+
+const height = props.activity.height + "px";
+const top= props.activity.top + "px";
 </script>
 
 <style scoped>
 .activity{
+    position: absolute;
+    top: v-bind(top);
+    height: v-bind(height);
+    background-color: v-bind(props.activity.color);
 
+    font-size: 20px;
 }
 </style>

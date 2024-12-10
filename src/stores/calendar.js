@@ -2,6 +2,7 @@ import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
 import axios from 'axios';
 import {acts}  from "../activities.js";
+import { runCalendar } from '@/components/function.js';
 
 export const useCalendarStore = defineStore('calendar', () => {
   /**
@@ -19,6 +20,11 @@ export const useCalendarStore = defineStore('calendar', () => {
    */
   const activities = ref([]);
 
+  /**
+   * 
+   */
+  const target_activities = ref([]);
+
   //const doubleCount = computed(() => count.value * 2);
 
   /**
@@ -32,6 +38,7 @@ export const useCalendarStore = defineStore('calendar', () => {
   function setBaseDate(date_obj)
   {
     base_date.value = new Date(date_obj);
+    notify();
   }
 
   function fetchActivities()
@@ -40,5 +47,15 @@ export const useCalendarStore = defineStore('calendar', () => {
     return activities.value;
   }
 
-  return { base_date, offset, setOffset, setBaseDate,fetchActivities};
+  function setTargetActivities(activities)
+  {
+    target_activities.value = activities;
+  }
+
+  function notify()
+  {
+    target_activities.value = runCalendar(activities.value, base_date.value);
+  }
+
+  return { base_date, target_activities ,offset, setOffset, setBaseDate,fetchActivities};
 })

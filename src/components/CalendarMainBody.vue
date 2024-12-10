@@ -7,7 +7,7 @@
         <div class="timelines">
             <TimelineScale />
             <Timeline v-for="n in 7" :key="n"
-                :activities="activities"
+                :activities="activities[n-1]"
             />
         </div>
     </div>
@@ -18,19 +18,27 @@ import TimelineHeader from './calendar_main_body/TimelineHeader.vue';
 import Timeline from './calendar_main_body/Timeline.vue';
 import TimelineScale from './calendar_main_body/TimelineScale.vue';
 import { watch,ref } from 'vue';
-import { addDay, getThisWeek } from './function.js';
+import { addDay, getThisWeek,runCalendar } from './function.js';
 import { useCalendarStore } from '@/stores/calendar';
 const cal_store = useCalendarStore();
 
+
+
+
 let date = cal_store.base_date;
 let week = ref(getThisWeek(date));
+const activities = ref(runCalendar(cal_store.fetchActivities()));
+
+
+
 watch(() =>cal_store.base_date, ()=>{
     date = cal_store.base_date;
     week.value = getThisWeek(date);
 });
 
-//const activities = cal_store.fetchActivities();
-const activities = [];
+watch(() =>cal_store.target_activities, ()=>{
+    activities.value = cal_store.target_activities;
+});
 </script>
 
 <style>
