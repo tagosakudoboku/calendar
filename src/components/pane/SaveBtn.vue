@@ -1,23 +1,19 @@
 <template>
-    <div class="update_btn">
-        <button @click="update">更新</button>
+    <div class="save_btn">
+        <button>保存する</button>
     </div>
 </template>
 
 <script setup>
-const emit = defineEmits(["update"]);
 
-const update = () => {
-    emit('update', '子コンポーネントからのデータ');
-};
 </script>
 
 
 <style scoped>
-    .update_btn > *{
+    .save_btn > *{
         height: 64px;
         width: 200px;
-        background-color: #ccc;
+        background-color: #1A67D2;
 
         font-size: 36px;
         color: white;
@@ -29,7 +25,7 @@ const update = () => {
         align-items: center;
     }
 
-    .update_btn > *:active{
+    .save_btn > *:active{
         background-color: #0E4A9E;
     }
 

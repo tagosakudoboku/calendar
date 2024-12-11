@@ -17,7 +17,7 @@
 import TimelineHeader from './calendar_main_body/TimelineHeader.vue';
 import Timeline from './calendar_main_body/Timeline.vue';
 import TimelineScale from './calendar_main_body/TimelineScale.vue';
-import { watch,ref } from 'vue';
+import { watch,ref, onMounted } from 'vue';
 import { addDay, getThisWeek,runCalendar } from './function.js';
 import { useCalendarStore } from '@/stores/calendar';
 const cal_store = useCalendarStore();
@@ -29,7 +29,9 @@ let date = cal_store.base_date;
 let week = ref(getThisWeek(date));
 const activities = ref(runCalendar(cal_store.fetchActivities()));
 
-
+onMounted(() => {
+    cal_store.notify();
+});
 
 watch(() =>cal_store.base_date, ()=>{
     date = cal_store.base_date;

@@ -1,20 +1,20 @@
 <template>
-    <div class="update_btn">
-        <button @click="update">更新</button>
+    <div class="discard_btn">
+        <button @click="discard">削除する</button>
     </div>
 </template>
 
 <script setup>
-const emit = defineEmits(["update"]);
+const emit = defineEmits(["discard"]);
 
-const update = () => {
-    emit('update', '子コンポーネントからのデータ');
+const discard = () => {
+    emit('discard', '子コンポーネントからのデータ');
 };
 </script>
 
 
 <style scoped>
-    .update_btn > *{
+    .discard_btn > *{
         height: 64px;
         width: 200px;
         background-color: #ccc;
@@ -29,7 +29,7 @@ const update = () => {
         align-items: center;
     }
 
-    .update_btn > *:active{
+    .discard_btn > *:active{
         background-color: #0E4A9E;
     }
 

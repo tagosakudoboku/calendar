@@ -5,28 +5,28 @@
                 <table>
                     <tr>
                         <td><span>タイトル</span></td>
-                        <td><span>{{ activity.title }}</span></td>
+                        <td><input type="text" v-model="title"></td>
                     </tr>
                     <tr>
-                        <td>ID</td>
-                        <td>{{ activity.id}}</td>
+                        <td>色</td>
+                        <td><input type="text" v-model="color"></td>
                     </tr>
                     <tr>
                         <td>開始時刻</td>
-                        <td>{{ activity.start_time }}</td>
+                        <td><input type="datetime-local" v-model="start_time" /></td>
                     </tr>
                     <tr>
                         <td>終了時刻</td>
-                        <td>{{ activity.end_time }}</td>
+                        <td><input type="datetime-local" v-model="end_time" /></td>
                     </tr>
                     <tr>
                         <td>説明</td>
-                        <td>{{ activity.description }}</td>
+                        <td></td>
                     </tr>
                 </table>
-                <CopyBtn />
-                <UpdateBtn />
-                <DiscardBtn @click="discard" />
+                
+                
+                <SaveBtn @click="submit"/>
                 <button @click="closeDialog">閉じる</button>
             </dialog>
         </div> 
@@ -34,11 +34,8 @@
 </template>
 
 <script setup>
+import SaveBtn from './SaveBtn.vue';
 import { ref } from 'vue';
-import CopyBtn from "./CopyBtn.vue";
-import UpdateBtn from './UpdateBtn.vue';
-import DiscardBtn from './DiscardBtn.vue';
-
 import { useCalendarStore } from '@/stores/calendar';
 const cal_store = useCalendarStore();
 
@@ -64,8 +61,18 @@ defineExpose({
     closeDialog,
 });
 
-const discard = () => {
-    cal_store.discardActivity(props.activity);
+const title = ref('');
+const start_time = ref('');
+const end_time = ref('');
+const color = ref('');
+
+const submit = () => {
+    cal_store.addActivity({
+        title: title.value,
+        start_time: start_time.value,
+        end_time: end_time.value,
+        color: color.value,
+    });
     closeDialog();
 };
 </script>
@@ -87,6 +94,6 @@ dialog {
 
         dialog > * {
             font-size: 40px;    
-            color: v-bind(props.activity.color);
+            
         }
 </style>

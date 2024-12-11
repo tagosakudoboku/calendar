@@ -1,5 +1,16 @@
 <template>
     <div class="pane">
-        Pane
+        <AddActivityBtn />
     </div>
 </template>
+
+<script setup>
+import AddActivityBtn from './pane/AddActivityBtn.vue';
+</script>
+
+
+<style scoped>
+.pane{
+
+}
+</style>

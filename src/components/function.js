@@ -198,3 +198,20 @@ export function runCalendar(activities, date = new Date())
     
     return rtn;
 }
+
+/**
+ * activitiesからactを除いた配列を返す
+ * @param {*} activities 
+ * @param {*} act 
+ * @returns 
+ */
+export function deleteActivity(activities, act)
+{
+    /**
+     * @todo サーバーからfetchした生データはすでにidが付与されている前提がない
+     */
+    //const rtn = activities.filter((item) => item.id !== act.id );    
+    const rtn = activities;
+    rtn.pop();
+    return rtn;
+}
