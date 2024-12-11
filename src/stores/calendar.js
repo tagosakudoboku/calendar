@@ -2,7 +2,7 @@ import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
 import axios from 'axios';
 import {acts,acts2}  from "../activities.js";
-import { runCalendar,convert2ActivityObj,deleteActivity } from '@/components/function.js';
+import { editActs, runCalendar,convert2ActivityObj,deleteActivity,calcTop } from '@/components/function.js';
 
 export const useCalendarStore = defineStore('calendar', () => {
   /**
@@ -43,7 +43,8 @@ export const useCalendarStore = defineStore('calendar', () => {
 
   function fetchActivities()
   {
-    activities.value = acts;
+    
+    activities.value = editActs(acts);
     return activities.value;
   }
 
@@ -54,7 +55,7 @@ export const useCalendarStore = defineStore('calendar', () => {
 
   function notify()
   {
-    target_activities.value = runCalendar(activities.value, base_date.value);
+    target_activities.value = runCalendar(activities.value, base_date.value); 
   }
 
   function addActivity(param)
@@ -67,7 +68,10 @@ export const useCalendarStore = defineStore('calendar', () => {
   function discardActivity(act)
   {
     const acts = deleteActivity(activities.value, act);
-    activities.value = acts;
+    
+    // 配列を直接書き換える（リアクティブ性維持）
+    //target_activities.value.splice(0, target_activities.value.length, ...acts);
+    activities.value.splice(0, activities.value.length, ...acts);
     notify();
   }
 

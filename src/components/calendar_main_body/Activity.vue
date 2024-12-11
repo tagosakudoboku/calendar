@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import { onMounted,ref } from 'vue';
+import { onMounted,ref,onBeforeUpdate} from 'vue';
 import ModalLogic from './ModalLogic.vue';
 const props = defineProps({
     activity: Object
@@ -18,6 +18,9 @@ onMounted(() => {
     // console.log(props.activity);  
 });
 
+onBeforeUpdate(() => {
+    //console.log(props.activity);
+});
 const showModal = () => {
     modal.value.showModal();
 };

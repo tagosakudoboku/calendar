@@ -23,6 +23,10 @@
                         <td>説明</td>
                         <td>{{ activity.description }}</td>
                     </tr>
+                    <tr>
+                        <td>top</td>
+                        <td>{{ activity.top }}</td>
+                    </tr>
                 </table>
                 <CopyBtn />
                 <UpdateBtn />

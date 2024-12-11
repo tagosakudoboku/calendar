@@ -49,7 +49,7 @@ export function convert2ActivityObj(param, options = {})
     const end_time = options.end_time ?? param.end_time;
 
     return {
-        'id': calcActivityID(),
+        'id': param.id || calcActivityID(),
         'date_id': calcDateID(start_time),
         'title': param.title,
         'start_time': start_time,
@@ -181,6 +181,7 @@ export function runCalendar(activities, date = new Date())
     );*/
 
     let local_acts = activities.flatMap((act)=>splitActivity(convert2ActivityObj(act)));
+    
     local_acts =doOverlapping(local_acts);
     
     // local_acts.push(local_acts.map((act) => splitActivity(act)));
@@ -207,11 +208,23 @@ export function runCalendar(activities, date = new Date())
  */
 export function deleteActivity(activities, act)
 {
+    
     /**
      * @todo サーバーからfetchした生データはすでにidが付与されている前提がない
      */
-    //const rtn = activities.filter((item) => item.id !== act.id );    
-    const rtn = activities;
-    rtn.pop();
+    const rtn = activities.filter((item) => item.id !== act.id );    
+    // const rtn = activities;
+    // rtn.pop();
+    
+    return rtn;
+}
+
+export function editActs(acts)
+{
+    const l_acts = acts;
+    const rtn = l_acts.map((act) => {
+        act.id = calcActivityID();
+        return act;
+    });
     return rtn;
 }

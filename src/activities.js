@@ -503,4 +503,20 @@ const acts2 = [
     { title: "セミナー", start_time: "2024-12-09 10:00:00", end_time: "2024-12-09 11:30:00", description: "最新技術セミナー", color: "#FFC300" },
     { title: "ランチ", start_time: "2024-12-10 12:00:00", end_time: "2024-12-10 13:00:00", description: "チームランチ交流会", color: "#33FF57" }
 ];
+
+const acts3 = [{
+    "title": "プレゼン準備",
+    "start_time": "2024-12-12 10:00:00",
+    "end_time": "2024-12-12 12:00:00",
+    "description": "重要なプレゼンの準備",
+    "color": "#16A085"
+},
+{
+    "title": "ディスカッション",
+    "start_time": "2024-12-12 11:00:00",
+    "end_time": "2024-12-12 13:00:00",
+    "description": "チーム内での議論",
+    "color": "#8E44AD"
+},
+];
 export {acts,acts2};

@@ -2,7 +2,7 @@
     <div class="timeline">
         <Activity 
             v-for="(act, index) in activities" 
-            :key="index" 
+            :key="act.id" 
             :activity="act"
         />
     </div>
