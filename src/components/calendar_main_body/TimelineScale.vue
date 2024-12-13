@@ -30,4 +30,8 @@
     .time_scale > span {
         text-align: right;
     }
+
+    .time_scale > span {
+        font-size: 32px;
+    }
 </style>

@@ -71,7 +71,7 @@ const timelines = ref([]);
     .calendar_main_body{
         height: 100%;
         width: 100%;
-        border-bottom: 4px solid red;
+        
 
         box-sizing: border-box;
         font-size: 64px;
@@ -90,10 +90,10 @@ const timelines = ref([]);
         /**
          *heightを%にすると画面より要素が大きくなる、が%にしたい
          */
-        height: 836px;/*
-        height: calc(100%)px; */
-        
-         display: flex;
+        /*height: 836px;*/
+        height: calc(100% - 16%); 
+        width: 100%;
+        display: flex;
         overflow-y: scroll !important;;
         overflow-x: hidden;
 
@@ -103,19 +103,21 @@ const timelines = ref([]);
         background-attachment: local; 
     }
 
-    .tmp_timelines {
-        display: flex;
-        /**
-         *heightを%にすると画面より要素が大きくなる、が%にしたい
-         */
-        /*height: 836px; 100%;*/
-        height: 100%;
-        overflow-y: scroll !important;;
-        overflow-x: hidden;
+    @media screen and (max-width: 479px) {
+  /*ウィンドウ幅が最大479pxまでの場合に適用*/
+  
 
-        background: linear-gradient(#ccc 1.5px, transparent 0px) #fff;
-        line-height: 30px;
-        background-size: 100% 60px;
-        background-attachment: local;
+  .calendar_main_body{
+        height: 100%;
+        width: 100%;
+        
+
+        box-sizing: border-box;
+        font-size: 64px;
+        max-height: 100%;
+        
+        /* align-items: center; */
+        /* overflow: hidden; */
     }
+}
 </style>

@@ -46,6 +46,7 @@ watch(() =>cal_store.base_date, ()=>{
 <style>
     .calendar_header{
         height: 72px;
+        width: 100%;
         border-bottom: 2px solid #ccc;
 
         box-sizing: border-box;

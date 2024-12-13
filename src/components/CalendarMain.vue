@@ -18,9 +18,9 @@ import Pane from './Pane.vue';
         display: grid;
         grid-auto-flow: column;
         grid-template-columns: 20% 80%;
+        grid-template-rows: 100%;
         height: 100%;
-        max-height: 100%;
-        
+        width: 100%;
         /*
         border-bottom: 2px solid #ccc;
 
@@ -46,8 +46,8 @@ import Pane from './Pane.vue';
         display: none;
     }
 
-    .calendar_main > .calendar_main_body{
+    /* .calendar_main > .calendar_main_body{
         width:100%;
-    }
+    } */
 }
 </style>
