@@ -33,6 +33,7 @@ export const useCalendarStore = defineStore('calendar', () => {
    */
   function setOffset(num) {
     offset.value = num;
+    notify();
   }
 
   function setBaseDate(date_obj)
@@ -80,5 +81,29 @@ export const useCalendarStore = defineStore('calendar', () => {
     notify();
   }
 
-  return { base_date, notify,target_activities ,offset, setOffset, setBaseDate,fetchActivities,addActivity,discardActivity};
+  /**
+   * 
+   */
+  const copied_activity= ref(null);
+
+  /**
+   * 
+   */
+  function copyActivity(activity)
+  {
+    copied_activity.value = activity;
+  }
+
+  function pasteActivity()
+  {
+    const rtn = copied_activity.value;
+    copied_activity.value = null;
+    addActivity(rtn);
+    return rtn; 
+  }
+
+  return { base_date, notify,target_activities ,
+    offset, setOffset, setBaseDate,fetchActivities,
+    addActivity,discardActivity, copyActivity,pasteActivity
+  };
 })

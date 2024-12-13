@@ -1,10 +1,15 @@
 <template>
     <div class="copy_btn">
-        コピーする
+        <button @click="copied">コピーする</button>
     </div>
 </template>
 
-<script>
+<script setup>
+const emit = defineEmits(["copied"]);
+
+const copied = () => {
+    emit('copied', '子コンポーネントからのデータ');
+};
 </script>
 
 <style scoped>

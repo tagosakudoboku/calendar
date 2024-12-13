@@ -28,8 +28,8 @@
                         <td>{{ activity.top }}</td>
                     </tr>
                 </table>
-                <CopyBtn />
-                <UpdateBtn />
+                <CopyBtn @copied="copy"/>
+                <UpdateBtn @click="paste" />
                 <DiscardBtn @click="discard" />
                 <button @click="closeDialog">閉じる</button>
             </dialog>
@@ -72,6 +72,16 @@ const discard = () => {
     cal_store.discardActivity(props.activity);
     closeDialog();
 };
+
+const copy = () => {
+    cal_store.copyActivity(props.activity);
+    closeDialog();
+};
+
+const paste = () => {
+    cal_store.pasteActivity();
+};
+
 </script>
 
 <style scoped>
