@@ -24,6 +24,24 @@ export function getThisWeek(date)
     return rtn;
 }
 
+export function getThatDates(date, offset=7)
+{
+    if (offset === 7) {
+        return getThisWeek(date);
+    }else {
+        let d = new Date(date);
+        d.setDate(d.getDate() - offset);
+        
+        const day = new Date(d);
+        let rtn = [];
+        for (let i=0;i<offset;++i) {
+            rtn.push(new Date(day));
+            day.setDate(day.getDate()+1);
+        }
+        return rtn;
+    }
+}
+
 export function addDay(date, offset = 1)
 {
     const local_date = new Date(date);

@@ -6,6 +6,8 @@
         <Next @click="click(7)"  />
         <ShowModalBtn />
         <Period :base_date="cal_store.base_date"/>
+
+        <PeriodToggle @change="change" />
     </div>
 </template>
 
@@ -15,6 +17,7 @@ import ShowModalBtn from './_shared/ShowModalBtn.vue';
 import Prev from './calendar_header/Prev.vue';
 import Period from './calendar_header/Period.vue';
 import Next from './calendar_header/Next.vue';
+import PeriodToggle from './calendar_header/PeriodToggle.vue';
 import { watch } from 'vue';
 import { addDay, getThisWeek } from './function.js';
 import { useCalendarStore } from '@/stores/calendar';
@@ -31,11 +34,13 @@ const toToday = () =>{
     cal_store.setBaseDate(new Date());
 }
 
+const change = (e) => {
+    cal_store.setOffset(e);
+};
+
 watch(() =>cal_store.base_date, ()=>{
     date = cal_store.base_date;
 });
-
-
 
 </script>
 <style>

@@ -29,10 +29,10 @@ export const useCalendarStore = defineStore('calendar', () => {
 
   /**
    * 
-   * @param {*} offset 
+   * @param {*} num
    */
-  function setOffset(offset) {
-    offset.value = offset;
+  function setOffset(num) {
+    offset.value = num;
   }
 
   function setBaseDate(date_obj)

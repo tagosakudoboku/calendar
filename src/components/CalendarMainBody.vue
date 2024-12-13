@@ -6,7 +6,7 @@
         </div>
         <div class="timelines" :key="activities" >
             <TimelineScale />
-            <Timeline v-for="n in 7" :key="n"
+            <Timeline v-for="n in offset" :key="n"
                 :activities="activities[n-1]"
             />
         </div>
@@ -18,7 +18,7 @@ import TimelineHeader from './calendar_main_body/TimelineHeader.vue';
 import Timeline from './calendar_main_body/Timeline.vue';
 import TimelineScale from './calendar_main_body/TimelineScale.vue';
 import { watch,ref, onMounted,nextTick } from 'vue';
-import { addDay, getThisWeek,runCalendar } from './function.js';
+import { addDay, getThisWeek,runCalendar,getThatDates } from './function.js';
 import { useCalendarStore } from '@/stores/calendar';
 const cal_store = useCalendarStore();
 
@@ -28,6 +28,7 @@ const cal_store = useCalendarStore();
 let date = cal_store.base_date;
 let week = ref(getThisWeek(date));
 const activities = ref(runCalendar(cal_store.fetchActivities()));
+const offset = ref(cal_store.offset);
 
 onMounted(() => {
     cal_store.notify();
@@ -42,6 +43,14 @@ watch(() =>cal_store.target_activities, ()=>{
     activities.value = cal_store.target_activities;
     
 });
+
+watch(
+    ()=>cal_store.offset, 
+    ()=> {
+        offset.value = cal_store.offset;
+    }
+);
+
 </script>
 
 <style>
