@@ -8,6 +8,8 @@
             <TimelineScale />
             <Timeline v-for="n in offset" :key="n"
                 :activities="activities[n-1]"
+                ref="timelines"
+                @dblclick="keydown($event, week[n-1])"
             />
         </div>
     </div>
@@ -51,6 +53,16 @@ watch(
     }
 );
 
+
+const keydown = (e,date) => {
+    cal_store.pasteActivity({
+        x:e.clientX,
+        first_date:week.value[0],
+        date: date,
+    });
+};
+
+const timelines = ref([]);
 </script>
 
 <style>

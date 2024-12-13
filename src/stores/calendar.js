@@ -2,8 +2,7 @@ import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
 import axios from 'axios';
 import {acts,acts2}  from "../activities.js";
-import { editActs, runCalendar,convert2ActivityObj,deleteActivity,calcTop } from '@/components/function.js';
-
+import { editActs, calcActivityID, runCalendar,convert2ActivityObj,deleteActivity,calcTop, addDay } from '@/components/function.js';
 export const useCalendarStore = defineStore('calendar', () => {
   /**
    * 
@@ -94,11 +93,30 @@ export const useCalendarStore = defineStore('calendar', () => {
     copied_activity.value = activity;
   }
 
-  function pasteActivity()
+  function pasteActivity(obj = {})
   {
+    if (copied_activity.value === null) {
+      return;
+    }
+
+    // const num = Math.floor(obj.x/250);
+    
     const rtn = copied_activity.value;
     copied_activity.value = null;
-    addActivity(rtn);
+    const s = new Date(rtn.start_time);
+    s.setDate(obj.date.getDate());
+
+    const e = new Date(rtn.end_time);
+    e.setDate(obj.date.getDate());
+    
+    const act = convert2ActivityObj(rtn, 
+      {id: calcActivityID(),
+        start_time :s,
+        end_time:e,
+    });
+
+    activities.value.push(act);
+    notify();
     return rtn; 
   }
 

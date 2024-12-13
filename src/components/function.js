@@ -56,9 +56,14 @@ export function calcDateID(date)
     return Math.floor((l_date.getTime()- offset)/(1000 * 60 * 60 *24));
 }
 
-function calcActivityID()
+export function calcActivityID()
 {
     return crypto.randomUUID();
+}
+
+export function calcDateIDFromPosition(e,)
+{
+
 }
 
 export function convert2ActivityObj(param, options = {})
@@ -67,7 +72,7 @@ export function convert2ActivityObj(param, options = {})
     const end_time = options.end_time ?? param.end_time;
 
     return {
-        'id': param.id || calcActivityID(),
+        'id': options.id || param.id || calcActivityID(),
         'date_id': calcDateID(start_time),
         'title': param.title,
         'start_time': start_time,
