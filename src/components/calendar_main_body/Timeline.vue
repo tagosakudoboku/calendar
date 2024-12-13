@@ -25,6 +25,6 @@ const props = defineProps({
         height: 1440px;
 
         position:relative;
-        top: 0;
+        top: 0px;
     }
 </style>

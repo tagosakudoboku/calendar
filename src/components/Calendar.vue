@@ -29,11 +29,22 @@ const sampleProps = () => {
   height: 100%;
   display: grid;
 
-  grid-template-rows: 76px auto;
+  grid-template-rows: 76px calc(100% - 76px);
 }
 
 
 @media (min-width: 1024px) {
   
+}
+
+@media screen and (max-width: 479px) {
+  /*ウィンドウ幅が最大479pxまでの場合に適用*/
+  .calendar {
+      width:100%;
+      height: 100%;
+      display: grid;
+
+      grid-template-rows: 76px auto 76px;
+    }
 }
 </style>

@@ -54,4 +54,19 @@ watch(() =>cal_store.base_date, ()=>{
         display: flex;
         align-items: center;
     }
+
+@media screen and (max-width: 479px) {
+  /*ウィンドウ幅が最大479pxまでの場合に適用*/
+    .calendar_header {
+      width:100%;
+      height: 100%;
+    
+      display: flex;
+        align-items: center;
+    }
+
+    .calendar_header > .today_btn, .next, .prev{
+        display: none;
+    }
+}
 </style>
