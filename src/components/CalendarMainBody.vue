@@ -90,8 +90,8 @@ const timelines = ref([]);
         /**
          *heightを%にすると画面より要素が大きくなる、が%にしたい
          */
-        /*height: 836px;*/
-        height: calc(100%)px; 
+        height: 836px;/*
+        height: calc(100%)px; */
         
          display: flex;
         overflow-y: scroll !important;;
