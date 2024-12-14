@@ -103,4 +103,20 @@ dialog {
             font-size: 40px;    
             color: v-bind(props.activity.color);
         }
+
+        @media screen and (max-width: 479px) {
+  /*ウィンドウ幅が最大479pxまでの場合に適用*/
+  dialog {
+      width:100%;
+      height: 100%;
+      /* display: grid;
+
+      grid-template-rows: 76px calc(100% - (76px + 76px)) 76px;
+      grid-template-columns: 100%; */
+    }
+
+    dialog > * {
+        font-size: 20px;
+    }
+}
 </style>

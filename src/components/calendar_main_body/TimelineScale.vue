@@ -37,7 +37,10 @@
 
     @media screen and (max-width: 479px) {
   /*ウィンドウ幅が最大479pxまでの場合に適用*/
-  
+        
+  .time_scale {
+    width: 8%;
+  }
 
     .time_scale > span{
             font-size: 20px;

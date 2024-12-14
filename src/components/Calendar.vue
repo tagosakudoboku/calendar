@@ -44,7 +44,7 @@ const sampleProps = () => {
       height: 100%;
       display: grid;
 
-      grid-template-rows: 76px calc(100% - 76px - 76px) 76px;
+      grid-template-rows: 76px calc(100% - (76px + 76px)) 76px;
       grid-template-columns: 100%;
     }
 }
