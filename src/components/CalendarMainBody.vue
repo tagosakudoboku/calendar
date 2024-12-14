@@ -84,6 +84,7 @@ const timelines = ref([]);
     .timeline_headers {
         display: flex;
         height: 16%;
+        width: 100%;
     }
     .timelines {
         
@@ -92,7 +93,7 @@ const timelines = ref([]);
          */
         /*height: 836px;*/
         height: calc(100% - 16%); 
-        width: 100%;
+        width: calc(100% - 15px);
         display: flex;
         overflow-y: scroll !important;;
         overflow-x: hidden;

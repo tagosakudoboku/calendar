@@ -66,7 +66,7 @@ watch(() =>cal_store.base_date, ()=>{
         align-items: center;
     }
 
-    .calendar_header > .today_btn, .next, .prev{
+    .calendar_header > .today_btn, .next, .prev, .period_toggle{
         display: none;
     }
 }
