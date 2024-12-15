@@ -23,6 +23,7 @@ import Timeline from './calendar_main_body/Timeline.vue';
 import TimelineScale from './calendar_main_body/TimelineScale.vue';
 import { watch,ref, onMounted,nextTick } from 'vue';
 import { addDay, getThisWeek,runCalendar,getThatDates } from './function.js';
+import Hammer from 'hammerjs';
 import { useCalendarStore } from '@/stores/calendar';
 const cal_store = useCalendarStore();
 
@@ -34,7 +35,16 @@ let week = ref(getThisWeek(date));
 const activities = ref(runCalendar(cal_store.fetchActivities()));
 const offset = ref(cal_store.offset);
 
+const swipe = (e) => {
+    if (e.direction === 4) {
+            cal_store.setBaseDate(addDay(date, -7));
+        } else if(e.direction === 2) {
+            cal_store.setBaseDate(addDay(date, 7));
+        }
+};
+
 onMounted(() => {
+    adjustHammer(document.querySelector('.calendar_main_body'), swipe);
     cal_store.notify();
 });
 
@@ -65,6 +75,12 @@ const keydown = (e,date) => {
 };
 
 const timelines = ref([]);
+
+const adjustHammer = (el, func) => {
+    const manager = new Hammer.Manager(el);
+    manager.add(new Hammer.Swipe());
+    manager.on('swipe', func);
+}
 </script>
 
 <style>
