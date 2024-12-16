@@ -23,6 +23,23 @@ export function getThisWeek(date)
     }
     return rtn;
 }
+/**
+ * その日を含む月を返す
+ * @param {*} date 
+ * 
+ */
+export function getThisMonth(date)
+{
+    const l_date = new Date(date);
+    const first_date = new Date(l_date.getFullYear(), l_date.getMonth(), 1);
+    const last_date = new Date(l_date.getFullYear(), l_date.getMonth()+1, 0);
+    const rtn = [];
+    while (first_date <= last_date) {
+        rtn.push(new Date(first_date));
+        first_date.setDate(first_date.getDate()+1);
+    }
+    return rtn;
+}
 
 export function getThatDates(date, offset=7)
 {

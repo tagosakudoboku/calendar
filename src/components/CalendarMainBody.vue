@@ -100,7 +100,12 @@ const adjustHammer = (el, func) => {
     .timeline_headers {
         display: flex;
         height: 16%;
+        /*width: calc(100% - 15px);*/
         width: 100%;
+    }
+
+    .timeline_headers > .timeline_header:first-child {
+        margin-left: 50px;
     }
     .timelines {
         
@@ -109,7 +114,8 @@ const adjustHammer = (el, func) => {
          */
         /*height: 836px;*/
         height: calc(100% - 16%); 
-        width: calc(100% - 15px);
+        /** width: calc(100% - 15px);*/
+        width:100%;
         display: flex;
         overflow-y: scroll !important;;
         overflow-x: hidden;
@@ -120,6 +126,9 @@ const adjustHammer = (el, func) => {
         background-attachment: local; 
     }
 
+    .timelines::-webkit-scrollbar {
+        display: none;
+    }
     @media screen and (max-width: 479px) {
   /*ウィンドウ幅が最大479pxまでの場合に適用*/
   
@@ -135,6 +144,10 @@ const adjustHammer = (el, func) => {
         
         /* align-items: center; */
         /* overflow: hidden; */
+    }
+
+    .timeline_headers > .timeline_header:first-child {
+        margin-left: 8%;
     }
 }
 </style>

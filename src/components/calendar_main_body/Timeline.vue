@@ -18,7 +18,7 @@ const props = defineProps({
 </script>
 <style>
     .timeline {
-        width: calc(100%/7);
+        width: calc((100% - 50px)/7);
         border-left: #ccc 2px solid;
 
         box-sizing: border-box;
@@ -27,4 +27,11 @@ const props = defineProps({
         position:relative;
         top: 0px;
     }
+
+@media screen and (max-width: 479px) {
+  /*ウィンドウ幅が最大479pxまでの場合に適用*/
+  .timeline {
+        width: calc((100% - 8%)/7);
+    }
+}
 </style>
