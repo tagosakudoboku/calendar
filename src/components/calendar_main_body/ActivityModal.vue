@@ -2,6 +2,9 @@
     <Teleport to="body">
          <div class="modal">
             <dialog ref="dialog">
+                <div class="dialog_nav">
+                    <CloseBtn @close="closeDialog" />
+                </div>
                 <table>
                     <tr>
                         <td><span>タイトル</span></td>
@@ -33,7 +36,7 @@
                     <DiscardBtn @click="discard" />
                     <EditBtn />
                 </div>
-                <button @click="closeDialog">閉じる</button>
+                
             </dialog>
         </div> 
     </Teleport>
@@ -45,6 +48,7 @@ import CopyBtn from "./CopyBtn.vue";
 import UpdateBtn from './UpdateBtn.vue';
 import DiscardBtn from './DiscardBtn.vue';
 import EditBtn from './EditBtn.vue';
+import CloseBtn from '../_shared/CloseBtn.vue';
 import { useCalendarStore } from '@/stores/calendar';
 const cal_store = useCalendarStore();
 
@@ -108,6 +112,13 @@ dialog {
 
         .buttons {
             display: flex;
+        }
+
+        .dialog_nav {
+            height: 64px;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
         }
         @media screen and (max-width: 479px) {
   /*ウィンドウ幅が最大479pxまでの場合に適用*/

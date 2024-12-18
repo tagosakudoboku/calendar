@@ -2,6 +2,9 @@
     <Teleport to="body">
          <div class="modal">
             <dialog ref="dialog">
+                <div class="dialog_nav">
+                    <CloseBtn @close="closeDialog" />
+                </div>
                 <table>
                     <tr>
                         <td><span>タイトル</span></td>
@@ -37,6 +40,7 @@
 import SaveBtn from './SaveBtn.vue';
 import { ref } from 'vue';
 import { useCalendarStore } from '@/stores/calendar';
+import CloseBtn from '../_shared/CloseBtn.vue';
 const cal_store = useCalendarStore();
 
 const emit = defineEmits(['close']);
@@ -95,5 +99,12 @@ dialog {
         dialog > * {
             font-size: 40px;    
             
+        }
+
+        .dialog_nav {
+            height: 64px;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
         }
 </style>
