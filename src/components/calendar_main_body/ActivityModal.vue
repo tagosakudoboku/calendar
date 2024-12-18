@@ -28,9 +28,11 @@
                         <td>{{ activity.top }}</td>
                     </tr>
                 </table>
-                <CopyBtn @copied="copy"/>
-                <UpdateBtn @click="paste" />
-                <DiscardBtn @click="discard" />
+                <div class="buttons">
+                    <CopyBtn @copy="copy"/>
+                    <DiscardBtn @click="discard" />
+                    <EditBtn />
+                </div>
                 <button @click="closeDialog">閉じる</button>
             </dialog>
         </div> 
@@ -42,7 +44,7 @@ import { ref } from 'vue';
 import CopyBtn from "./CopyBtn.vue";
 import UpdateBtn from './UpdateBtn.vue';
 import DiscardBtn from './DiscardBtn.vue';
-
+import EditBtn from './EditBtn.vue';
 import { useCalendarStore } from '@/stores/calendar';
 const cal_store = useCalendarStore();
 
@@ -104,6 +106,9 @@ dialog {
             color: v-bind(props.activity.color);
         }
 
+        .buttons {
+            display: flex;
+        }
         @media screen and (max-width: 479px) {
   /*ウィンドウ幅が最大479pxまでの場合に適用*/
   dialog {
