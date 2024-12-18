@@ -35,6 +35,7 @@
                     <CopyBtn @copy="copy"/>
                     <DiscardBtn @click="discard" />
                     <EditBtn />
+                    <CancelBtn @cancel="closeDialog" />
                 </div>
                 
             </dialog>
@@ -49,6 +50,7 @@ import UpdateBtn from './UpdateBtn.vue';
 import DiscardBtn from './DiscardBtn.vue';
 import EditBtn from './EditBtn.vue';
 import CloseBtn from '../_shared/CloseBtn.vue';
+import CancelBtn from '../_shared/CancelBtn.vue';
 import { useCalendarStore } from '@/stores/calendar';
 const cal_store = useCalendarStore();
 

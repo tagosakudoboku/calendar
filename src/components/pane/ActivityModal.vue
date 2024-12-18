@@ -29,8 +29,9 @@
                 </table>
                 
                 
-                <SaveBtn @click="submit"/>
-                <button @click="closeDialog">閉じる</button>
+                <SaveBtn @save="submit"/>
+                <CancelBtn @cancel="closeDialog" />
+                
             </dialog>
         </div> 
     </Teleport>
@@ -41,6 +42,7 @@ import SaveBtn from './SaveBtn.vue';
 import { ref } from 'vue';
 import { useCalendarStore } from '@/stores/calendar';
 import CloseBtn from '../_shared/CloseBtn.vue';
+import CancelBtn from '../_shared/CancelBtn.vue';
 const cal_store = useCalendarStore();
 
 const emit = defineEmits(['close']);
