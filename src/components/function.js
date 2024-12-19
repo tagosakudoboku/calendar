@@ -228,16 +228,20 @@ export function runCalendar(activities, date = new Date(), offset = 7)
     let dates = getThisWeek(date);
     switch (offset) {
         case 1:
+            dates = [date];
             break;
         case 5:
+            dates = get5Days(date);
             break;
+        case 29:
+        case 30:        
         case 31:
             dates = getThisMonth(date);
             break;
     }
     
     const rtn = [];
-    for (let i=0;i<offset;++i) {
+    for (let i=0;i<dates.length;++i) {
         rtn[i] = [];
         rtn[i].push(
             ...local_acts.filter(
@@ -294,12 +298,41 @@ export function getDateSeq(date = new Date(), offset = 7)
     let dates = getThisWeek(date);
     switch (offset) {
         case 1:
+            dates = [date];
             break;
         case 5:
+            dates = get5Days(date);
             break;
+        case 29:
+        case 30:
         case 31:
             dates = getThisMonth(date);
             break;
     }
     return dates;
+}
+
+export function getNumberOfDaysInThisMonth(date = new Date())
+{
+    let d = new Date(date);
+    d.setMonth(d.getMonth()+1, 0);
+    return d.getDate();
+}
+
+/**
+ * 基準日の周辺5日感を適当に返す
+ * @param {*} date 
+ * @returns 
+ */
+export function get5Days(date = new Date())
+{
+    let d = new Date(date);
+    d.setDate(d.getDate() -2);
+
+    let rtn = [];
+    for (let i=0;i<5;++i) {
+        rtn.push(new Date(d));
+        d.setDate(d.getDate()+1);
+    }
+    return rtn;
 }

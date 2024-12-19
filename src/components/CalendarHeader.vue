@@ -2,11 +2,11 @@
     <div class="calendar_header">
         カレンダー
         <TodayBtn @click="toToday"/>
-        <Prev @click="click(-7)" />
-        <Next @click="click(7)"  />
+        <Prev @click="click(-local_offset)" />
+        <Next @click="click(local_offset)"  />
         <ShowModalBtn />
         <Period :base_date="cal_store.base_date"/>
-
+        
         <PeriodToggle @change="change" />
     </div>
 </template>
@@ -45,6 +45,7 @@ watch(() =>cal_store.base_date, ()=>{
 
 watch(() =>cal_store.offset, ()=>{
     local_offset.value = cal_store.offset;
+    
 });
 
 </script>

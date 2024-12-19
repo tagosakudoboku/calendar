@@ -4,19 +4,19 @@
             <!-- <TimelineHeader v-for="(day, index) in week" :key="index" 
             :date="day" /> -->
             <TimelineHeader 
-                v-for="n in offset" :key="n" 
+                v-for="n in activities.length" :key="n" 
                 :date="week[n-1]" 
-                :offset = "offset"
-            />
+                :offset = "activities.length"
+            /> 
         </div>
         
             <div class="timelines" :key="activities" >
                 <TimelineScale />
-                <Timeline v-for="n in offset" :key="n"
+                <Timeline v-for="n in activities.length" :key="n"
                     :activities="activities[n-1]"
                     ref="timelines"
                     @dblclick="keydown($event, week[n-1])"
-                    :offset = "offset"
+                    :offset = "activities.length"
                 />
             </div>
     </div>
@@ -64,7 +64,6 @@ watch(() =>cal_store.base_date, ()=>{
 
 watch(() =>cal_store.target_activities, ()=>{
     activities.value = cal_store.target_activities;
-    
 });
 
 watch(
