@@ -1,15 +1,24 @@
 <template>
-    <div class="timeline_header">
+    <div class="timeline_header" :style="style">
         {{ date.getDate() }}
     </div>
 </template>
 <script setup>
 const props = defineProps({
-    date: Object
+    date: Object,
+    offset: {
+        type: Number,
+        default: 7
+    },
 });
 
 const day = props.date.getDay();
 const color = day===0?'red':day===6?'blue':'black';
+
+const style = {
+    width: `calc((100% - 50px)/${props.offset})`,
+};
+
 </script>
 
 <style scoped>
@@ -17,8 +26,8 @@ const color = day===0?'red':day===6?'blue':'black';
     font-size: 44px;
     font-weight: 600;
     color: v-bind(color);
-    /* width: calc(100%/7); */
-    width: calc((100% - 50px)/7);
+    /* width: calc(100%/7); 
+    width: calc((100% - 50px)/7);*/
     display: flex;
     justify-content: center;
     align-items: center;

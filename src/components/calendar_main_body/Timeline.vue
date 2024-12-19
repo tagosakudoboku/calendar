@@ -1,5 +1,5 @@
 <template>
-    <div class="timeline">
+    <div class="timeline" :style="style">
         <Activity 
             v-for="(act, index) in activities" 
             :key="act.id" 
@@ -13,12 +13,21 @@ import Activity from './Activity.vue';
 
 const props = defineProps({
     activities: Array,
+    offset: {
+        type: Number,
+        default: 7
+    },
 });
+
+
+const style = {
+    width: `calc((100% - 50px)/${props.offset})`,
+};
 
 </script>
 <style>
     .timeline {
-        width: calc((100% - 50px)/7);
+        /* width: calc((100% - 50px)/v-bind(props.offset)); */
         border-left: #ccc 2px solid;
 
         box-sizing: border-box;

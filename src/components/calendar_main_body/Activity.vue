@@ -45,5 +45,6 @@ const left =  props.activity.left+ "%";
     overflow: hidden;
 
     user-select: none;
+    cursor: pointer;
 }
 </style>

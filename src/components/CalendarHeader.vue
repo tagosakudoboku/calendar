@@ -18,12 +18,13 @@ import Prev from './calendar_header/Prev.vue';
 import Period from './calendar_header/Period.vue';
 import Next from './calendar_header/Next.vue';
 import PeriodToggle from './calendar_header/PeriodToggle.vue';
-import { watch } from 'vue';
+import { watch,ref } from 'vue';
 import { addDay, getThisWeek } from './function.js';
 import { useCalendarStore } from '@/stores/calendar';
 const cal_store = useCalendarStore();
 
 let date = cal_store.base_date;
+const local_offset = ref(cal_store.offset);
 
 function click(offset = 1)
 {
@@ -40,6 +41,10 @@ const change = (e) => {
 
 watch(() =>cal_store.base_date, ()=>{
     date = cal_store.base_date;
+});
+
+watch(() =>cal_store.offset, ()=>{
+    local_offset.value = cal_store.offset;
 });
 
 </script>

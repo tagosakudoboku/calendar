@@ -213,7 +213,7 @@ function doOverlapping(activities)
     return local_acts;
 }
 
-export function runCalendar(activities, date = new Date())
+export function runCalendar(activities, date = new Date(), offset = 7)
 {
     /*
     let local_acts = activities.map(
@@ -225,10 +225,19 @@ export function runCalendar(activities, date = new Date())
     local_acts =doOverlapping(local_acts);
     
     // local_acts.push(local_acts.map((act) => splitActivity(act)));
-   
-    const dates = getThisWeek(date);
+    let dates = getThisWeek(date);
+    switch (offset) {
+        case 1:
+            break;
+        case 5:
+            break;
+        case 31:
+            dates = getThisMonth(date);
+            break;
+    }
+    
     const rtn = [];
-    for (let i=0;i<7;++i) {
+    for (let i=0;i<offset;++i) {
         rtn[i] = [];
         rtn[i].push(
             ...local_acts.filter(
@@ -267,4 +276,30 @@ export function editActs(acts)
         return act;
     });
     return rtn;
+}
+
+/**
+ * ピクセル値から時間を返す
+ * @param {*} y 
+ */
+export function calcTimeFromY(y)
+{
+    const h = Math.floor(y/60);
+    const m = y%60;
+    return [h,m];
+}
+
+export function getDateSeq(date = new Date(), offset = 7)
+{
+    let dates = getThisWeek(date);
+    switch (offset) {
+        case 1:
+            break;
+        case 5:
+            break;
+        case 31:
+            dates = getThisMonth(date);
+            break;
+    }
+    return dates;
 }

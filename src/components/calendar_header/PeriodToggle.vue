@@ -3,7 +3,7 @@
         <select @change="change">
             <option value="1">1Day</option>
             <option value="5">5Day</option>
-            <option value="7">week</option>
+            <option value="7" selected>week</option>
             <option value="31">month</option>
             <option value="365">year</option>
         </select>

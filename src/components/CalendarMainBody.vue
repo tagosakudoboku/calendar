@@ -1,8 +1,13 @@
 <template>
     <div class="calendar_main_body">
-        <div class="timeline_headers">
-            <TimelineHeader v-for="(day, index) in week" :key="index" 
-            :date="day" />
+        <div class="timeline_headers" :key="offset" >
+            <!-- <TimelineHeader v-for="(day, index) in week" :key="index" 
+            :date="day" /> -->
+            <TimelineHeader 
+                v-for="n in offset" :key="n" 
+                :date="week[n-1]" 
+                :offset = "offset"
+            />
         </div>
         
             <div class="timelines" :key="activities" >
@@ -11,9 +16,9 @@
                     :activities="activities[n-1]"
                     ref="timelines"
                     @dblclick="keydown($event, week[n-1])"
+                    :offset = "offset"
                 />
             </div>
-        
     </div>
 </template>
 
@@ -22,7 +27,7 @@ import TimelineHeader from './calendar_main_body/TimelineHeader.vue';
 import Timeline from './calendar_main_body/Timeline.vue';
 import TimelineScale from './calendar_main_body/TimelineScale.vue';
 import { watch,ref, onMounted,nextTick } from 'vue';
-import { addDay, getThisWeek,runCalendar,getThatDates } from './function.js';
+import { addDay, getThisWeek,runCalendar,getThatDates,getDateSeq } from './function.js';
 import Hammer from 'hammerjs';
 import { useCalendarStore } from '@/stores/calendar';
 const cal_store = useCalendarStore();
@@ -31,9 +36,12 @@ const cal_store = useCalendarStore();
 
 
 let date = cal_store.base_date;
-let week = ref(getThisWeek(date));
-const activities = ref(runCalendar(cal_store.fetchActivities()));
 const offset = ref(cal_store.offset);
+const activities = ref(runCalendar(cal_store.fetchActivities()));
+// let week = ref(getThisWeek(date));
+let week = ref(getDateSeq(date, offset.value));
+
+
 
 const swipe = (e) => {
     if (e.direction === 4) {
@@ -50,7 +58,8 @@ onMounted(() => {
 
 watch(() =>cal_store.base_date, ()=>{
     date = cal_store.base_date;
-    week.value = getThisWeek(date);
+    //week.value = getThisWeek(date);
+    week.value = getDateSeq(date, offset.value);
 });
 
 watch(() =>cal_store.target_activities, ()=>{
@@ -62,6 +71,7 @@ watch(
     ()=>cal_store.offset, 
     ()=> {
         offset.value = cal_store.offset;
+        week.value = getDateSeq(date, offset.value);
     }
 );
 
@@ -69,6 +79,7 @@ watch(
 const keydown = (e,date) => {
     cal_store.pasteActivity({
         x:e.clientX,
+        y: e.offsetY,
         first_date:week.value[0],
         date: date,
     });

@@ -2,7 +2,7 @@ import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
 import axios from 'axios';
 import {acts,acts2}  from "../activities.js";
-import { editActs, calcActivityID, runCalendar,convert2ActivityObj,deleteActivity,calcTop, addDay } from '@/components/function.js';
+import { calcTimeFromY,editActs, calcActivityID, runCalendar,convert2ActivityObj,deleteActivity,calcTop, addDay } from '@/components/function.js';
 export const useCalendarStore = defineStore('calendar', () => {
   /**
    * 
@@ -25,6 +25,8 @@ export const useCalendarStore = defineStore('calendar', () => {
   const target_activities = ref([]);
 
   //const doubleCount = computed(() => count.value * 2);
+
+  
 
   /**
    * 
@@ -55,7 +57,7 @@ export const useCalendarStore = defineStore('calendar', () => {
 
   function notify()
   {
-    target_activities.value = runCalendar(activities.value, base_date.value); 
+    target_activities.value = runCalendar(activities.value, base_date.value,offset.value); 
   }
 
   function addActivity(param)
@@ -99,16 +101,32 @@ export const useCalendarStore = defineStore('calendar', () => {
       return;
     }
 
-    // const num = Math.floor(obj.x/250);
-    
+    const [h, m] = calcTimeFromY(obj.y);
     const rtn = copied_activity.value;
-    copied_activity.value = null;
+    //copied_activity.value = null;
+    /**
+     * 
+     */
     const s = new Date(rtn.start_time);
-    s.setDate(obj.date.getDate());
-
     const e = new Date(rtn.end_time);
-    e.setDate(obj.date.getDate());
+
+    const sec = (e-s)/(1000 *60);
+    /**
+     * 
+     */
+    s.setDate(obj.date.getDate());
+    s.setHours(h);
+    s.setMinutes(m);
+
+    /**
+     * 
+     */
     
+    e.setDate(obj.date.getDate());
+    e.setHours(h + Math.floor(sec/60));
+    e.setMinutes(m + Math.floor(sec%60));
+
+
     const act = convert2ActivityObj(rtn, 
       {id: calcActivityID(),
         start_time :s,
