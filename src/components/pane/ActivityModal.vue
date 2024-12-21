@@ -21,6 +21,7 @@
                     <tr>
                         <td>終了時刻</td>
                         <td><input type="datetime-local" v-model="end_time" /></td>
+                        <td><TimeInput /></td>
                     </tr>
                     <tr>
                         <td>説明</td>
@@ -43,6 +44,7 @@ import { ref } from 'vue';
 import { useCalendarStore } from '@/stores/calendar';
 import CloseBtn from '../_shared/CloseBtn.vue';
 import CancelBtn from '../_shared/CancelBtn.vue';
+import TimeInput from './TimeInput.vue';
 const cal_store = useCalendarStore();
 
 const emit = defineEmits(['close']);
