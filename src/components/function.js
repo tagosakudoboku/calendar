@@ -336,3 +336,9 @@ export function get5Days(date = new Date())
     }
     return rtn;
 }
+
+export function getThisMonthFirstDate(date = new Date())
+{
+    const d = new Date(date.getFullYear(), date.getMonth(), 1);
+    return d;
+}
