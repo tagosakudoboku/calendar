@@ -6,7 +6,7 @@
         <Next @click="click(local_offset)"  />
         <ShowModalBtn />
         <Period :base_date="cal_store.base_date"/>
-        
+        <button @click="cal_store.toggleWide()">Non Wide</button>
         <PeriodToggle @change="change" />
     </div>
 </template>

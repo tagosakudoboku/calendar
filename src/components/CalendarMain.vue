@@ -1,6 +1,6 @@
 <template>
-    <div class="calendar_main">
-        <Pane />
+    <div class="calendar_main" :class="{'wide': isActive}">
+        <Pane v-if="!isActive" />
         <CalendarMainBody />
     </div>
 </template>
@@ -9,6 +9,13 @@
 <script setup>
 import CalendarMainBody from './CalendarMainBody.vue';
 import Pane from './Pane.vue';
+import { ref,watch } from 'vue';
+import { useCalendarStore } from '@/stores/calendar';
+const cal_store = useCalendarStore();
+const isActive = ref(cal_store.wide);
+watch(()=>cal_store.wide, ()=>{
+    isActive.value = cal_store.getWide();
+});
 </script>
 <style>
 
@@ -29,6 +36,11 @@ import Pane from './Pane.vue';
 
         display: flex;
         align-items: center; */
+    }
+
+    .wide {
+        
+        grid-template-columns:100%;
     }
 
     @media screen and (max-width: 479px) {

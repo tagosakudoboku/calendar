@@ -138,8 +138,21 @@ export const useCalendarStore = defineStore('calendar', () => {
     return rtn; 
   }
 
+  const wide = ref(false);
+  function toggleWide()
+  {
+    wide.value = !wide.value;
+    
+  }
+
+  function getWide()
+  {
+    return wide.value
+  }
+
   return { base_date, notify,target_activities ,
     offset, setOffset, setBaseDate,fetchActivities,
-    addActivity,discardActivity, copyActivity,pasteActivity
+    addActivity,discardActivity, copyActivity,pasteActivity, 
+    toggleWide,getWide,wide
   };
 })

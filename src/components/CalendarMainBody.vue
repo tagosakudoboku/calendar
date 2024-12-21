@@ -139,6 +139,8 @@ const adjustHammer = (el, func) => {
     .timelines::-webkit-scrollbar {
         display: none;
     }
+
+    
     @media screen and (max-width: 479px) {
   /*ウィンドウ幅が最大479pxまでの場合に適用*/
   

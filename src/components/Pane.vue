@@ -1,5 +1,5 @@
 <template>
-    <div class="pane">
+    <div class="pane" :class="{'none': isActive}">
         <AddActivityBtn />
         <MiniCalendar @date-selected="select" />
     </div>
@@ -13,6 +13,13 @@ const cal_store = useCalendarStore();
 const select = ($event) => {
     cal_store.setBaseDate($event);
 };
+const props = defineProps({
+    active: {
+        type: Boolean,
+        default: true,
+    }
+});
+const isActive = props.active;
 </script>
 
 
@@ -21,4 +28,8 @@ const select = ($event) => {
     width:100%;
     height: 100%;
 }
+/*
+.none {
+    display: none;
+}*/
 </style>
