@@ -34,13 +34,14 @@
                 <div class="buttons">
                     <CopyBtn @copy="copy"/>
                     <DiscardBtn @click="discard" />
-                    <EditBtn />
+                    <EditBtn @edit="edit" />
                     <CancelBtn @cancel="closeDialog" />
                 </div>
                 
             </dialog>
         </div> 
     </Teleport>
+    
 </template>
 
 <script setup>
@@ -52,6 +53,7 @@ import EditBtn from './EditBtn.vue';
 import CloseBtn from '../_shared/CloseBtn.vue';
 import CancelBtn from '../_shared/CancelBtn.vue';
 import { useCalendarStore } from '@/stores/calendar';
+
 const cal_store = useCalendarStore();
 
 const emit = defineEmits(['close']);
@@ -90,6 +92,10 @@ const paste = () => {
     cal_store.pasteActivity();
 };
 
+//const useModal = ref(null);
+const edit = () => {
+    closeDialog();
+}
 </script>
 
 <style scoped>
