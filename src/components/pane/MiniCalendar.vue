@@ -1,8 +1,9 @@
 <template>
     <div class="mini_calendar">
         <div class="mini_calendar_header">
-            <Prev></Prev>
-            <Next></Next>
+            <Period :base_date="date"/>
+            <Prev @click="move(-30)"></Prev>
+            <Next @click="move(30)"></Next>
         </div>
         <div class="row" v-for="n in 6">
             <span v-for="j in 7" @click="click(dates[7*(n-1) + (j-1)])">
@@ -12,20 +13,28 @@
     </div>
 </template>
 <script setup>
-import { getThisMonth,getThisMonthFirstDate} from '../function.js';
+import { getThisMonth,getThisMonthFirstDate,addDay} from '../function.js';
 import { useCalendarStore } from '@/stores/calendar.js';
 import { defineEmits,watch,ref } from 'vue';
-import Next from '../calendar_header/Next.vue';
-import Prev from '../calendar_header/Prev.vue';
+import Next from './mini_calendar/Next.vue';
+import Prev from './mini_calendar/Prev.vue';
+import Period from './mini_calendar/Period.vue';
+import { off } from 'hammerjs';
 const cal_store = useCalendarStore();
 
 const emit = defineEmits(['date-selected']);
+let date = ref(cal_store.base_date);
+let dates = ref(getThisBoard(date.value));
 
-let dates = ref(getThisBoard(cal_store.base_date));
-
-const click = (date) => {
-    emit('date-selected', date);
+const click = (d) => {
+    emit('date-selected', d);
 };
+
+function move(offset = 1)
+{
+    date.value = addDay(date.value, offset);
+    dates.value =getThisBoard(date.value);
+}
 
 watch(
     () =>cal_store.base_date,
@@ -49,6 +58,13 @@ function getThisBoard(base_date = new Date())
 
 
 <style scoped>
+.mini_calendar > *{
+    user-select: none;
+}
+.mini_calendar_header {
+    display: flex;
+}
+
 .row {
     width: 100%;
     display: flex;
