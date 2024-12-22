@@ -1,20 +1,29 @@
 <template>
     <div class="use_modal" >
-        <button @click="showModal">モーダルを表示する</button>
-        <Modal ref="modal"><slot></slot></Modal>
+        <Modal ref="modal" v-if="visible" >
+            <template #content>
+                <slot name="content" :closeModal="closeModal"></slot>
+            </template>
+        </Modal>
     </div>
 </template>
 
 <script setup>
-import { onMounted,ref,onBeforeUpdate} from 'vue';
+import { ref, defineExpose, nextTick} from 'vue';
 import Modal from './Modal.vue';
-const props = defineProps({
-    activity: Object|null,
-});
 
 const modal = ref(null);
+const visible = ref(false);
 
-const showModal = () => {
-    modal.value.showDialog();
+const showModal = async () => {
+    visible.value = true; 
+    await nextTick(); 
+    modal.value?.showDialog();
 };
+
+const closeModal = () => {
+    visible.value = false;
+};
+
+defineExpose({showModal,closeModal});
 </script>

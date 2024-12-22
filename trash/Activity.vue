@@ -1,39 +1,25 @@
 <template>
     <div class="activity" @click="showModal">
         {{ activity.title }}
-        <!-- <ModalLogic ref="modal" :activity="activity" /> -->
+        <ModalLogic ref="modal" :activity="activity" />
 
-        <UseModal ref="modal">
+        <UseModal>
             <template #content="{ closeModal }">
-                <component
-                    :is="component"
-                    :activity="activity"
-                    @close="handleClose(closeModal)"
-                    @edit="toEditMode"
-                    :mode = "'update'"
-                />
-                <!-- <ActivityDetail :activity="activity" @close="closeModal" @edit="console.log(1234)" /> -->
+                <ActivityForm @close="closeModal" />
             </template>
         </UseModal> 
     </div>
 </template>
 
 <script setup>
-import { onMounted,ref,onBeforeUpdate,shallowRef,onUnmounted} from 'vue';
+import { onMounted,ref,onBeforeUpdate} from 'vue';
 import UseModal from '../_shared/modal/UseModal.vue';
 import ModalLogic from './ModalLogic.vue';
-import ActivityDetail from './ActivityDetail.vue';
-import ActivityForm from '../pane/ActivityForm.vue';
 const props = defineProps({
     activity: Object
 });
 
 const modal = ref(null);
-const component = shallowRef(ActivityDetail);
-
-const toEditMode = () => {
-    component.value = ActivityForm;
-};
 
 onMounted(() => {
     // console.log(props.activity);  
@@ -44,11 +30,6 @@ onBeforeUpdate(() => {
 });
 const showModal = () => {
     modal.value.showModal();
-};
-
-const handleClose = (fn) => {
-    fn();
-    component.value = ActivityDetail;
 };
 
 const height = props.activity.height + "px";

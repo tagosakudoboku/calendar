@@ -2,8 +2,11 @@
     <Teleport to="body">
          <div class="modal">
             <dialog ref="dialog">
-                <slot></slot>
-                <button @click="closeDialog">閉じる</button>
+                <!-- <slot name="content" :onClose="{closeDialog}" > -->
+                <slot name="content">
+                    <h2>これはモーダルの中身です.</h2>
+                    <button @click="closeDialog">閉じる</button>
+                </slot>
             </dialog>
         </div> 
     </Teleport>

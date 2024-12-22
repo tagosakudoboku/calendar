@@ -1,19 +1,23 @@
 <template>
     <div class="add_activity_btn">
+        <!-- <button @click="showModal">新規作成</button>
+        <ModalLogic ref="modal" /> -->
         <button @click="showModal">新規作成</button>
-        <ModalLogic ref="modal" />
     </div>
 </template>
 
 <script setup>
-import { onMounted,ref } from 'vue';
+import { onMounted,ref,defineEmits } from 'vue';
 import ModalLogic from './ModalLogic.vue';
 const modal = ref(null);
+const emit=defineEmits(['add']);
 
 onMounted(() => {});
 
 const showModal = () => {
-    modal.value.showModal();
+    modal.value?.showModal();
+    emit('add');
+    console.log('add event');
 };
 
 </script>

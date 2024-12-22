@@ -2,7 +2,10 @@
     <div class="pane" :class="{'none': isActive}">
         <UseModal ref="use_modal">
             <template #content="{ closeModal }">
-                <ActivityForm @close="closeModal" />
+                <!-- <ActivityForm @close="closeModal" /> -->
+            </template>
+            <template #modal_display="{ onShowModal }">
+                <AddActivityBtn @click="onShowModal" />
             </template>
         </UseModal>
         <AddActivityBtn @add="showModal" />

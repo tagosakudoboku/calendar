@@ -67,6 +67,16 @@ export const useCalendarStore = defineStore('calendar', () => {
     notify();
   }
 
+  function updateActivity(act, param)
+  {
+    const acts = deleteActivity(activities.value, act);
+
+    const new_act = convert2ActivityObj(param);
+    acts.push(new_act);
+    activities.value.splice(0, activities.value.length, ...acts);
+    notify();
+  }
+
   function discardActivity(act)
   {
     const acts = deleteActivity(activities.value, act);
@@ -76,11 +86,11 @@ export const useCalendarStore = defineStore('calendar', () => {
     activities.value.splice(0, activities.value.length, ...acts);
     notify();
   }
-
+  /*
   function updateActivity()
   {
     notify();
-  }
+  }*/
 
   /**
    * 
@@ -153,6 +163,6 @@ export const useCalendarStore = defineStore('calendar', () => {
   return { base_date, notify,target_activities ,
     offset, setOffset, setBaseDate,fetchActivities,
     addActivity,discardActivity, copyActivity,pasteActivity, 
-    toggleWide,getWide,wide
+    toggleWide,getWide,wide, updateActivity
   };
 })
