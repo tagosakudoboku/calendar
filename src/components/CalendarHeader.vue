@@ -56,7 +56,7 @@ watch(() =>cal_store.offset, ()=>{
         border-bottom: 2px solid #ccc;
 
         box-sizing: border-box;
-        font-size: 40px;
+        font-size: 32px;
 
         display: flex;
         align-items: center;

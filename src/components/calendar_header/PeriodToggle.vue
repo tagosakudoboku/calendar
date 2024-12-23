@@ -27,12 +27,12 @@ const change = (event) => {
     .period_toggle > select{
         height: 64px;
         width: 196px;
-        font-size: 36px;
+        font-size: 32px;
 
         border-radius: 32px;
     }
 
     .period_toggle > select > option{
-        font-size: 36px;
+        font-size: 32px;
     }
 </style>

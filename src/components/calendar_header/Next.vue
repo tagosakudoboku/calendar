@@ -1,6 +1,6 @@
 <template>
     <div class="next">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 64px; height: 64px; opacity: 1;" xml:space="preserve">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 56px; height: 56px; opacity: 1;" xml:space="preserve">
 
 <g>
 	<path class="st0" d="M478.875,191.126L271.008,41.066l-1.295-0.928l-1.337-0.87c-12.67-8.17-27.324-12.49-42.395-12.49
@@ -21,7 +21,7 @@
 </script>
 <style>
     .next {
-        height: 64px;
+        height: 60px;
     }
 
     .st0{fill:#4B4B4B;}

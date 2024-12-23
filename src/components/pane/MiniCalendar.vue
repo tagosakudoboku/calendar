@@ -74,7 +74,7 @@ function getThisBoard(base_date = new Date())
 .row > span {
     display: flex;
     justify-content: center; /* コンテンツを水平方向で中央揃え */
-    font-size: 28px;
+    font-size: 20px;
     align-items: center;
     width: calc(100%/7);
     border-radius: 50%;

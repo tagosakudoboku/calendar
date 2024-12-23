@@ -19,7 +19,7 @@ const click = () => {
 
 <style>
 .today_btn {
-    width: 196px;
+    width: 128px;
     height: 64px;
     border: 1.5px solid #ccc;
         

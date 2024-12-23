@@ -94,7 +94,7 @@ const edit = () => {
 <style scoped>
 
     .activity_detail > * {
-            font-size: 40px;    
+            font-size: 32px;    
             color: v-bind(props.activity.color);
         }
     

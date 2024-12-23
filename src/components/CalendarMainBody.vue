@@ -100,7 +100,7 @@ const adjustHammer = (el, func) => {
         
 
         box-sizing: border-box;
-        font-size: 64px;
+        font-size: 60px;
         max-height: 100%;
         
         /* align-items: center; */
@@ -151,7 +151,7 @@ const adjustHammer = (el, func) => {
         
 
         box-sizing: border-box;
-        font-size: 64px;
+        font-size: 60px;
         max-height: 100%;
         
         /* align-items: center; */

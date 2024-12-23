@@ -16,6 +16,6 @@ const props = defineProps({
 
 <style scoped>
 .period {
-    font-size: 36px;
+    font-size: 32px;
 }
 </style>

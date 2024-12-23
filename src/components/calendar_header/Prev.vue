@@ -1,6 +1,6 @@
 <template>
     <div class="prev">
-        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 64px; height: 64px; opacity: 1;" xml:space="preserve">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="width: 56px; height: 56px; opacity: 1;" xml:space="preserve">
             <g>
 	            <path class="st0" d="M426.231,121.22h-63.754c6.586-30.688-5.665-62.058-31.498-80.214c-13.206-9.296-28.771-14.228-44.959-14.228
                     c-15.071,0-29.726,4.32-42.395,12.49l-1.337,0.87l-1.295,0.928L33.194,191.074C12.38,206.146,0,230.402,0,256.004

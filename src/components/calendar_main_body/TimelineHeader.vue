@@ -23,7 +23,7 @@ const style = {
 
 <style scoped>
 .timeline_header {
-    font-size: 44px;
+    font-size: 32px;
     font-weight: 600;
     color: v-bind(color);
     /* width: calc(100%/7); 
