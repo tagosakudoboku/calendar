@@ -2,6 +2,7 @@
     <div class="calendar_main" :class="{'wide': isActive}">
         <Pane v-if="!isActive" />
         <CalendarMainBody />
+        <AddActBtn />
     </div>
 </template>
 
@@ -11,6 +12,7 @@ import CalendarMainBody from './CalendarMainBody.vue';
 import Pane from './Pane.vue';
 import { ref,watch } from 'vue';
 import { useCalendarStore } from '@/stores/calendar';
+import AddActBtn from './_shared/AddActBtn.vue';
 const cal_store = useCalendarStore();
 const isActive = ref(cal_store.wide);
 watch(()=>cal_store.wide, ()=>{
@@ -43,6 +45,10 @@ watch(()=>cal_store.wide, ()=>{
         grid-template-columns:100%;
     }
 
+    .calendar_main >.add_act_btn{
+        display: none;
+    }
+
     @media screen and (max-width: 479px) {
   /*ウィンドウ幅が最大479pxまでの場合に適用*/
   .calendar_main {
@@ -56,6 +62,10 @@ watch(()=>cal_store.wide, ()=>{
 
     .calendar_main > .pane{
         display: none;
+    }
+
+    .calendar_main > .add_act_btn{
+        display: unset;
     }
 
     /* .calendar_main > .calendar_main_body{

@@ -46,4 +46,15 @@ const showModal = () => {
     button {
         all: unset;
     }
+    @media screen and (max-width: 479px) {
+        .add_activity_btn {
+            position: fixed;
+            z-index: 1000;
+            bottom: 80px;
+            right: 16px;
+        }
+        
+
+    }
+
 </style>

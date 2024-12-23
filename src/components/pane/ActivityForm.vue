@@ -7,12 +7,14 @@
                 </div>
                 <table>
                     <tr>
-                        <td><span>タイトル</span></td>
-                        <td><input type="text" v-model="title"></td>
+                        <!-- <td><span>タイトル</span></td>
+                        <td><input type="text" v-model="title"></td> -->
+                        <TitleInput :title="title" @change="change_title($event)" />
                     </tr>
                     <tr>
-                        <td>色</td>
-                        <td><input type="text" v-model="color"></td>
+                        <!-- <td>色</td>
+                        <td><input type="text" v-model="color"></td> -->
+                        <ColorInput :colors ="colors" @change="change_color($event)" />
                     </tr>
                     <!-- <tr>
                         <td>開始時刻</td>
@@ -25,11 +27,12 @@
                     </tr> -->
                     <tr>
                         <td><TimeInput :start_time="start_time" :end_time="end_time" @change="change($event)" /></td>
-                        <td></td>
+                        
                     </tr>
                     <tr>
-                        <td>説明</td>
-                        <td></td>
+                        <!-- <td>説明</td>
+                        <td></td> -->
+                        <DescriptionInput @change="change_description($event)" :description="description"/>
                     </tr>
                     
                 </table>
@@ -52,6 +55,9 @@ import CloseBtn from '../_shared/CloseBtn.vue';
 import CancelBtn from '../_shared/CancelBtn.vue';
 import TimeInput from './TimeInput.vue';
 import UpdateBtn from '../calendar_main_body/UpdateBtn.vue';
+import TitleInput from './TitleInput.vue';
+import ColorInput from "./ColorInput.vue";
+import DescriptionInput from './DescriptionInput.vue';
 const cal_store = useCalendarStore();
 
 const emit = defineEmits(['close']);
@@ -84,7 +90,16 @@ const title = ref(props.activity?.title);
 const start_time = ref(props.activity?.start_time);
 const end_time = ref(initEndTime());
 const color = ref(props.activity?.color);
+const description = ref(props.activity?.description);
 
+let colors = ref(['#FF0000', '#00FF00', '#0000FF']);
+const initColors = () => {
+    
+    if(typeof props.activity !== "undefined") {
+        colors.value.push(props.activity.color);
+    }
+};
+initColors();
 function initEndTime(d)
 {
     if (props.activity?.end_time === null) {
@@ -97,7 +112,15 @@ const change=(event) => {
     start_time.value = event.start_time;
     end_time.value = event.end_time;
 };
-
+const change_title = (event) => {
+    title.value = event;
+};
+const change_description = (event) => {
+    description.value = event;
+};
+const change_color = (event) => {
+    color.value = event;
+};
 const update = () => {
     cal_store.updateActivity(props.activity, {
         id: props.activity.id,
@@ -105,7 +128,16 @@ const update = () => {
         start_time: start_time.value,
         end_time: end_time.value,
         color: color.value,
-    });
+        description: description.value,
+    });/*
+    console.log({
+        id: props.activity.id,
+        title: title.value,
+        start_time: start_time.value,
+        end_time: end_time.value,
+        color: color.value,
+        description: description.value,
+    });*/
     closeDialog();
 };
 const add = () => {
@@ -117,6 +149,7 @@ const add = () => {
         start_time: start_time.value,
         end_time: end_time.value,
         color: color.value,
+        description: description.value,
     });
     closeDialog();
 };
